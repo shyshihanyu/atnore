@@ -1,0 +1,6 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppClean.targets(76,5): warning : 文件“d:\ziyuan\ftp\atnore\atnore\x64\debug\vc140.pdb”正由另一进程使用，因此该进程无法访问此文件。
+  main.cpp
+  Atnore.cpp
+  正在生成代码...
+  Atnore.vcxproj -> D:\ziyuan\FTP\Atnore\x64\Debug\Atnore.exe
+  Atnore.vcxproj -> D:\ziyuan\FTP\Atnore\x64\Debug\Atnore.pdb (Full PDB)

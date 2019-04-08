@@ -1,0 +1,11 @@
+D:\workspace\ATDS\Target\Debug
+C:\Users\vt\Desktop\test
+//不需要的文件
+.cpp
+.user
+.h
+.txt
+.ilk
+.pdb
+.exp
+.lib
