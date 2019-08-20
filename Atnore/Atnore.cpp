@@ -20,9 +20,9 @@ void CAtnore::ReadFile( string filename )
 	ifstream in( filename );
 	string line;
 
-	if (in) // ÓĞ¸ÃÎÄ¼ş  
+	if (in) // æœ‰è¯¥æ–‡ä»¶  
 	{
-		while (!in.eof()) // lineÖĞ²»°üÀ¨Ã¿ĞĞµÄ»»ĞĞ·û  
+		while (!in.eof()) // lineä¸­ä¸åŒ…æ‹¬æ¯è¡Œçš„æ¢è¡Œç¬¦  
 		{
 			getline( in , line );
 			cout << line << endl;
@@ -30,7 +30,7 @@ void CAtnore::ReadFile( string filename )
 			m_ncount++;
 		}
 	}
-	else // Ã»ÓĞ¸ÃÎÄ¼ş  
+	else // æ²¡æœ‰è¯¥æ–‡ä»¶  
 	{
 		cout << "no such file" << endl;
 	}
@@ -41,7 +41,7 @@ void CAtnore::ReadFile( string filename )
 
 void CAtnore::AtCreateDirectory()
 {
-	/**********ÎÄ¼ş¼Ğ¼ÓÊ±¼ä******************/
+	/**********æ–‡ä»¶å¤¹åŠ æ—¶é—´******************/
 	SYSTEMTIME st = { 0 };
 	GetLocalTime( &st );
 	int day = st.wDay;
@@ -78,9 +78,9 @@ void CAtnore::DeleteDir( string &srcPath )
 	intptr_t handle = _findfirst( startFindPath.c_str() , &FileInfo );  //	
 	if (handle == -1L) { return; }
 	do {
-		if (FileInfo.attrib == _A_SUBDIR) //ÅĞ¶ÏÊÇ·ñÎª×ÓÎÄ¼ş¼Ğ		
+		if (FileInfo.attrib == _A_SUBDIR) //åˆ¤æ–­æ˜¯å¦ä¸ºå­æ–‡ä»¶å¤¹		
 		{
-			if (( strcmp( FileInfo.name , "." ) != 0 ) && ( strcmp( FileInfo.name , ".." ) != 0 ))  //¹ıÂËµô±¾´ú±í±¾Ä¿Â¼µÄ.ºÍÉÏÒ»¼¶Ä¿Â¼µÄ..			
+			if (( strcmp( FileInfo.name , "." ) != 0 ) && ( strcmp( FileInfo.name , ".." ) != 0 ))  //è¿‡æ»¤æ‰æœ¬ä»£è¡¨æœ¬ç›®å½•çš„.å’Œä¸Šä¸€çº§ç›®å½•çš„..			
 			{
 				string newPath = srcPath + "\\" + FileInfo.name;
 				DeleteDir(newPath);
@@ -113,14 +113,14 @@ void CAtnore::CopyFiles( string &srcPath , string &desPath )
 	intptr_t handle = _findfirst( startFindPath.c_str() , &FileInfo );  //	
 	if (handle == -1L) { return; }
 	do {
-		if (FileInfo.attrib == _A_SUBDIR) //ÅĞ¶ÏÊÇ·ñÎª×ÓÎÄ¼ş¼Ğ		
+		if (FileInfo.attrib == _A_SUBDIR) //åˆ¤æ–­æ˜¯å¦ä¸ºå­æ–‡ä»¶å¤¹		
 		{
-			if (( strcmp( FileInfo.name , "." ) != 0 ) && ( strcmp( FileInfo.name , ".." ) != 0 ))  //¹ıÂËµô±¾´ú±í±¾Ä¿Â¼µÄ.ºÍÉÏÒ»¼¶Ä¿Â¼µÄ..			
+			if (( strcmp( FileInfo.name , "." ) != 0 ) && ( strcmp( FileInfo.name , ".." ) != 0 ))  //è¿‡æ»¤æ‰æœ¬ä»£è¡¨æœ¬ç›®å½•çš„.å’Œä¸Šä¸€çº§ç›®å½•çš„..			
 			{
 				cout << "subdir:" << FileInfo.name << endl;
 				string newPath = srcPath + "\\" + FileInfo.name;
 				string newdesPath = desPath + "\\" + FileInfo.name;
-				if (_access( newdesPath.c_str() , 0 ) == -1)  //ÅĞ¶Ï×éºÏºÃµÄÄ¿Â¼ÊÇ·ñÒÑ¾­´æÔÚ£¬²»´æÔÚÔò´´½¨				
+				if (_access( newdesPath.c_str() , 0 ) == -1)  //åˆ¤æ–­ç»„åˆå¥½çš„ç›®å½•æ˜¯å¦å·²ç»å­˜åœ¨ï¼Œä¸å­˜åœ¨åˆ™åˆ›å»º				
 				{
 					_mkdir( newdesPath.c_str() );
 				}
@@ -135,12 +135,12 @@ void CAtnore::CopyFiles( string &srcPath , string &desPath )
 			ofstream fout( desFilePath , ios::binary );
 			if (!fin)
 			{
-				cout << "Ô´ÎÄ¼şÂ·¾¶Ã»ÓĞÕÒµ½:" << srcFilePath << endl;
+				cout << "æºæ–‡ä»¶è·¯å¾„æ²¡æœ‰æ‰¾åˆ°:" << srcFilePath << endl;
 				continue;
 			}
 			if (!fout)
 			{
-				cout << "´ò¿ª»òÕß´´½¨ÎÄ¼şÊ§°Ü:" << desFilePath << endl;
+				cout << "æ‰“å¼€æˆ–è€…åˆ›å»ºæ–‡ä»¶å¤±è´¥:" << desFilePath << endl;
 				continue;
 			}
 
@@ -232,7 +232,7 @@ void CAtnore::AtGitLab()
 
 	string exe3 = "git commit -m 'update' ";
 	WinExec(exe3.c_str(), SW_HIDE);
-	string exe5 = "git remote add origin https://192.168.16.235/jinguanglu/ATDS_release.git ";
+	string exe5 = "git remote add origin  ";
 	WinExec(exe5.c_str(), SW_HIDE);*/
 	/*string exe6 = "git pull --rebase origin master ";
 	WinExec(exe6.c_str(), SW_HIDE);*/
